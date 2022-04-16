@@ -15,17 +15,17 @@ Upon starting, Memfini will start logging all the supported events & will be log
 - Kernel Memory
 - Foreign Process
 
-Example - 
-`memfini --pid 123`
+Example - <br> 
+`memfini --pid 123`<br>
 `memfini --pname procname`
 
 
 **NOTE -** Remember to stop memfini (`memfini --stop`),  to avoid full disk space usage.
 
 
-###Uninstall - 
+### Uninstall - 
 - Run `./install.sh uninstall` for removing Memfini. 
 
-**Warning - **This will remove all the logs, recommended to backup. 
+**Warning -** This will remove all the logs, recommended to backup. 
 
 
