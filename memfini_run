@@ -1,0 +1,86 @@
+#!/usr/bin/env python3
+
+
+print("------------------ MEMFINI v0.1 - System-wide Memory Monitoring Interface -------------")	
+	
+class FileOp:
+	def __init__(self):
+		
+		if os.path.exists('/var/log/memfini.log'):
+			self.file = open('/var/log/memfini.log','r')
+		else:
+			self.start()
+		
+	def start(self):
+		command = 'sudo service syslog-ng start;sudo depmod; sudo modprobe memfini'
+		process = subprocess.run(command, capture_output=True, shell=True)
+		print(process.stdout.decode())
+		print(" !! Started !! ")
+		self.file = open('/var/log/memfini.log','r')
+		
+	def process_id(self, pid):
+		lines = self.file.readlines()
+		for index,line in enumerate(lines):
+			if "(" in line:
+				result = re.findall('\(([0-9]+)\)', line)
+				cnv = [str(integer) for integer in result]
+				e_pid = "".join(cnv)
+				if int(e_pid)== pid:
+					print(line)
+					self.file.seek(0)
+						
+	def process_name(self, pname, pid):
+		lines = self.file.readlines()
+		for index,line in enumerate(lines):
+			if pname in line:
+				print(line)
+				self.file.seek(0)
+							
+	def stop(self):
+		command = 'sudo modprobe -r memfini'
+		process = subprocess.run(command, capture_output=True, shell=True)
+		print(process.stdout.decode())
+		self.file.close()
+		print(" !! Stopped !! ")
+		exit()
+	
+	
+#def flag_map():
+	#{"MAP_SHARED":, 1, "MAP_SHARED"}	
+	
+	
+if __name__ == '__main__':
+	import argparse
+	import subprocess
+	import re, os.path
+	
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--start', help='Start Memfini', action="store_true")
+	parser.add_argument('--stop', help='Stop Memfini', action="store_true")
+	parser.add_argument('--pid', type=int, help='Filter by Process ID')
+	parser.add_argument('--pname' ,help='Filter by Process Name')
+	parser.add_argument('--foreign', help='Foreign Process access', action="store_true")
+	parser.add_argument('--shared', help='Shared memory events', action="store_true")
+	parser.add_argument('--inmemory', help='In-memory File Creation', action="store_true")
+	parser.add_argument('--kernel', help='Kernel memory events', action="store_true")
+	#parser.add_argument('--log', help='Write output to new file')
+	args = parser.parse_args()
+	print(args)
+	fileop = FileOp()
+	if args.pname:
+		fileop.process_name(args.pname, args.pid)
+	if args.pid:
+		fileop.process_id(args.pid)
+	if args.shared:
+		fileop.process_name("Shared memory")
+	if args.inmemory:
+		fileop.process_name("File in memory")
+	if args.foreign:
+		fileop.process_name("foreign process")
+	if args.foreign:
+		fileop.process_name("Kernel Memory")
+	if args.start:
+		fileop.start()
+	if args.stop:
+		fileop.stop()
+	
