@@ -1,5 +1,5 @@
 # memfini
-A Systemwide memory monitoring interface for linux
+A Systemwide memory related events monitoring interface for linux. Memfini is capable of monitoring memory allocations on User space, Kernel space as well as some under looked allocations like PCI device mapping etc. It provides a command line interface with multiple filters, allowing a user to interact with the logs generated & get the required data. Currently, the user will be able to filter the events by individual process, type of access etc.
 
 ### Usage
 
