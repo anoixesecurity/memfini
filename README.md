@@ -29,7 +29,7 @@ Example - <br>
 `memfini --pname procname`
 
 
-**NOTE -** Remember to stop memfini (`memfini --stop`),  to avoid full disk space usage.
+**NOTE -** Remember to stop memfini (`memfini --stop`),  to avoid excessive disk space usage.
 
 
 ### Uninstall - 
