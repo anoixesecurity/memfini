@@ -59,7 +59,6 @@ static asmlinkage long fh_sys_mprotect(struct pt_regs *regs)
 {
 	long ret;
 	ret = real_sys_mprotect(regs);
-	pr_info(",aabb %ld", ret);
 	if (ret < 0) {
 		error_mprotect(abs(ret));
 		return ret;
