@@ -311,7 +311,7 @@ static struct ftrace_hook demo_hooks[] = {
 	HOOK("sys_mprotect", fh_sys_mprotect, &real_sys_mprotect),
 	HOOK("sys_ptrace", fh_sys_ptrace, &real_sys_ptrace),
 	HOOK("sys_process_vm_writev", fh_sys_process_vm_writev, &real_sys_process_vm_writev),
-	HOOK("sys_memfd_create", fh_sys_memfd_create, &real_sys_memfd_create),
+	//HOOK("sys_memfd_create", fh_sys_memfd_create, &real_sys_memfd_create),
 #if KERNEL_MONITOR
 	HOOK2("__kmalloc", fh_kmalloc, &real_kmalloc),
 	HOOK2("kvmalloc_node", fh_kvmalloc, &real_kvmalloc),
