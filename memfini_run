@@ -40,8 +40,8 @@ class FileOp:
 		command = 'sudo modprobe -r memfini'
 		process = subprocess.run(command, capture_output=True, shell=True)
 		print(process.stdout.decode())
-        if self.file != None:
-            self.file.close()
+		if self.file != None:
+				self.file.close()
 		print(" !! Stopped !! ")
 		exit()
 	
