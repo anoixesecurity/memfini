@@ -9,10 +9,10 @@ class FileOp:
 		if os.path.exists('/var/log/memfini.log'):
 			self.file = open('/var/log/memfini.log','r')
 		else:
-			self.start()
+			self.file = None
 		
 	def start(self):
-		command = 'sudo service syslog-ng start;sudo depmod; sudo modprobe memfini'
+		command = 'sudo service syslog-ng restart;sudo depmod; sudo modprobe memfini'
 		process = subprocess.run(command, capture_output=True, shell=True)
 		print(process.stdout.decode())
 		print(" !! Started !! ")
@@ -29,7 +29,7 @@ class FileOp:
 					print(line)
 					self.file.seek(0)
 						
-	def process_name(self, pname, pid):
+	def process_name(self, pname):
 		lines = self.file.readlines()
 		for index,line in enumerate(lines):
 			if pname in line:
@@ -40,7 +40,8 @@ class FileOp:
 		command = 'sudo modprobe -r memfini'
 		process = subprocess.run(command, capture_output=True, shell=True)
 		print(process.stdout.decode())
-		self.file.close()
+        if self.file != None:
+            self.file.close()
 		print(" !! Stopped !! ")
 		exit()
 	
@@ -65,10 +66,9 @@ if __name__ == '__main__':
 	parser.add_argument('--kernel', help='Kernel memory events', action="store_true")
 	#parser.add_argument('--log', help='Write output to new file')
 	args = parser.parse_args()
-	print(args)
 	fileop = FileOp()
 	if args.pname:
-		fileop.process_name(args.pname, args.pid)
+		fileop.process_name(args.pname)
 	if args.pid:
 		fileop.process_id(args.pid)
 	if args.shared:
