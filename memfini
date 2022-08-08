@@ -77,7 +77,7 @@ if __name__ == '__main__':
 		fileop.process_name("File in memory")
 	if args.foreign:
 		fileop.process_name("foreign process")
-	if args.foreign:
+	if args.kernel:
 		fileop.process_name("Kernel Memory")
 	if args.start:
 		fileop.start()
