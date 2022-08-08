@@ -41,7 +41,7 @@ static asmlinkage void *fh_kmalloc(size_t size, gfp_t flags)
 		KEDR_NUM_FRAMES_INTERNAL, /* as many entries as we can get */
 		7 /* we need all stack entries here */);
 	//dump_stack();
-	pr_info(",Kernel Memory allocation perfomed of size %ld and flags 0x%lx. Caller details: %pS", size, flags, stack_entries[13]);
+	pr_info(",Kernel Memory allocation perfomed of size %ld and flags 0x%lx. Caller details: %pS", size, flags, stack_entries[14]);
 	ret = real_kmalloc(size, flags);
 
 	return ret;
