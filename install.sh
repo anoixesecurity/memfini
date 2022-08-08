@@ -26,8 +26,8 @@ if [ ! -d $MODPATH$(uname -r)/kernel/drivers/memfini ]; then
 			sudo cp memfini.ko $MODPATH$(uname -r)/kernel/drivers/memfini/
 		fi
 fi
-sudo chmod +x memfini_run
-sudo cp memfini_run /usr/local/bin
+sudo chmod +x memfini
+sudo cp memfini /usr/local/bin
 sudo $BASH_SOURCE cron_install
 echo "Installation done.."
 exit
@@ -37,7 +37,7 @@ uninstall()
 {
 MODPATH="/lib/modules/"
 sudo rm -rf /var/log/memfini.log
-sudo rm -rf /usr/local/bin/memfini_run
+sudo rm -rf /usr/local/bin/memfini
 sudo rm -rf $MODPATH$(uname -r)/kernel/drivers/memfini/
 make clean
 echo "See you soon!"
