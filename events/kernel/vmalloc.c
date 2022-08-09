@@ -41,7 +41,7 @@ static asmlinkage void *fh_vmalloc(unsigned long size)
 		KEDR_NUM_FRAMES_INTERNAL, /* as many entries as we can get */
 		7 /* we need all stack entries here */);
 	//dump_stack();
-	pr_info(",Kernel Memory allocation performed for size %ld. Caller detail: %pS", size, stack_entries[12]);
+	pr_info(",Kernel Memory allocation performed for size %ld. Caller details: %pS", size, stack_entries[13]);
 
 	ret = real_vmalloc(size);
 
