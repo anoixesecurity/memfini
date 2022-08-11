@@ -64,7 +64,7 @@ if __name__ == '__main__':
 	parser.add_argument('--shared', help='Shared memory events', action="store_true")
 	parser.add_argument('--inmemory', help='In-memory File Creation', action="store_true")
 	parser.add_argument('--kernel', help='Kernel memory events', action="store_true")
-    parser.add_argument('--error', help='Failed events', action="store_true")
+	parser.add_argument('--error', help='Failed events', action="store_true")
 	#parser.add_argument('--log', help='Write output to new file')
 	args = parser.parse_args()
 	fileop = FileOp()
