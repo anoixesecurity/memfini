@@ -18,6 +18,7 @@
 #include <linux/sched.h>
 #include <linux/sched/signal.h>
 #include "events/mmap.c"
+#include "events/munmap.c"
 #include "events/mmap2.c"
 #include "events/brk.c"
 #include "events/shm.c"
@@ -305,6 +306,7 @@ static char *duplicate_filename(const char __user *filename)
 static struct ftrace_hook demo_hooks[] = {
 	HOOK("sys_mmap", fh_sys_mmap, &real_sys_mmap),
 	HOOK("sys_mmap_pgoff", fh_sys_mmap_pgoff, &real_sys_mmap_pgoff),
+	HOOK("sys_munmap", fh_sys_munmap, &real_sys_munmap),
 	HOOK("sys_brk", fh_sys_brk, &real_sys_brk),
 	HOOK("sys_shmat", fh_sys_shmat, &real_sys_shmat),
 	HOOK("sys_shmget", fh_sys_shmget, &real_sys_shmget),
