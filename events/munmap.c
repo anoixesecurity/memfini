@@ -96,7 +96,7 @@ static asmlinkage long fh_sys_munmap(struct pt_regs *regs)
     }
 	//if (strncmp(current->comm, "demo1", 5) == 0) {
 		//pr_info(" mem_alloc, Process: %s(%d), address: %lx, size: %ld, Memory permission: %ld, flag: %lx, fd: %ld\n",current->comm, current->pid, ret, regs->si, regs->dx, regs->cx, regs->r8);
-	pr_info(",Process %s(%d) performed memory unmapping of address 0x%lx of size %ld\n", current->comm, current->pid, regs->di,regs->si);
+	pr_info(",Process %s(%d) performed memory unmapping of address 0x%lx and size %ld\n", current->comm, current->pid, regs->di,regs->si);
 	//}
 	return ret;
 }
