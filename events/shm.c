@@ -144,7 +144,7 @@ static asmlinkage long fh_sys_shmat(struct pt_regs *regs)
 		return ret;
     }
 
-	pr_info(",Process %s(%d) attached to shared memory of shmid %ld at address %lx\n",current->comm, current->pid, regs->di, ret);
+	pr_info(",Process %s(%d) attached to Shared memory of shmid %ld at address %lx\n",current->comm, current->pid, regs->di, ret);
 
 	return ret;
 }
@@ -163,7 +163,7 @@ static asmlinkage long fh_sys_shmat(int shmid, char __user *shmaddr, int shmflg)
 		return ret;
     }
 
-	pr_info(",Process %s(%d) attached to shared memory of shmid %d at address %lx\n",current->comm, current->pid, shmid, ret);
+	pr_info(",Process %s(%d) attached to Shared memory of shmid %d at address %lx\n",current->comm, current->pid, shmid, ret);
 
 
 	return ret;
