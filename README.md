@@ -41,4 +41,5 @@ Upon starting, Memfini will start logging all the supported events & will be log
 
 **Warning -** This will remove all the logs, recommended to backup. 
 
-
+## Featured
+Memfini is featured in defcon 30: ![Forum url](https://forum.defcon.org/node/242228)
