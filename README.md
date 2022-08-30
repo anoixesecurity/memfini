@@ -15,7 +15,7 @@ Tested on Ubuntu 20.04 LTS and Debian Buster
 - Start Memfini by running `memfini --start`
 
 Upon starting, Memfini will start logging all the supported events & will be logged in `/var/log/memfini.log`. Memfini provides basic filters, which can be used to extract required information from the log file. 
-
+![Memfini usage](https://github.com/anoixesecurity/memfini/blob/main/Resources/Screenshot%201.png?raw=true)
 **Note** - Kernel memory monitoring is disabled by default. To enable it, change the value of `DKERNEL_MONITOR=1` in Makefile <br/><br/>
 **Supported filters**  - 
 - PID
@@ -24,11 +24,15 @@ Upon starting, Memfini will start logging all the supported events & will be log
 - Kernel Memory
 - Foreign Process
 
-Example - <br> 
+**Examples** - <br> 
 `memfini --pid 123`<br>
 `memfini --pname procname`
-
-
+<br/>
+<br/>
+**Screenshots**
+<br/>
+![Memfini Filters](https://github.com/anoixesecurity/memfini/blob/main/Resources/Screenshot%202.png?raw=true)
+![Memfini Filters 2](https://github.com/anoixesecurity/memfini/blob/main/Resources/Screenshot%203.png?raw=true)
 **NOTE -** Remember to stop memfini (`memfini --stop`),  to avoid excessive disk space usage.
 
 
